@@ -1,7 +1,72 @@
 <!DOCTYPE html>
-<html>
-<body>
-  HELLO
-</body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <script src="java.js"></script>
+  
+  <title>Frontend Mentor | E-commerce product page</title>
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <table id="tableTop">
+      <tr>
+        <td><div id="headerLeft"> <!--menu--><img src="images/icon-menu.svg" class="element"> <!--SNEAKERS logo--><img src="images/logo.svg" class="element" id="sneakersLogo"></div> </td>
+        <td><div id="headerRight"> <!--Cart image--><img src="images/icon-cart.svg" class="element" style="transform: translateX(15px);"> <!--person--><img src="images/image-avatar.png" class="element" id="avatar" style="scale: 0.3;"></div></td>
+      </tr>
+    </table>
+  </header>
+
+    <!-- BIG IMAGE -->
+    <div id="mainImageDiv">
+      <img id="mainImage" src="images/image-product-1.jpg">
+      <img id="animateImage" src="images/image-product-2.jpg" style="position: absolute; transform: translateX(-100%); animation: scrollImage 1s; visibility: hidden;">  
+      <div id="arrows"> 
+        <div id="arrowL" onclick="scrollAnimationReverse()"><img src="images/icon-previous.svg" style="transform: translateX(2px); scale: 0.8;"></div>
+    
+        <div id="arrowR" onclick="scrollAnimation()"><img src="images/icon-previous.svg" style="transform: scaleX(-1) translateX(-6px); scale: 0.8;"></div> 
+      </div id="arrows">
+    </div id="mainImageDiv">
+    
+
+    <!-- Text Content -->
+    <div>
+      <p id="companyTitle">SNEAKER COMPANY</p>
+      <div id="limitedTitle" class="tit">Fall Limited Edition <br>Sneakers</div>
+      <p id="paragraph">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.</p>
+       
+      <!-- PRICING -->
+      <table style="transform: translateY(-10px);">
+        <tr>
+          <td><div id="price" class="tit">$125.00</div></td>
+          <td><div id="sale" class="saleBox">50%</div></td> 
+          <td style="width: 100%;"><div id="oldPrice"><del>$250.00</del></div></td>
+        </tr>
+        
+      </table>
+
+      <!-- BUYING -->
+      <div>
+        <!-- quantity -->
+        <div id="quantityPicker"><img><h4>0</h4><img></div>
+
+        <!-- add to cart -->
+        <div><img>Add to cart</div>
+      </div>
+      
+    </div>
+    
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Batman</a>.
+  </div>
+</body>
 </html>

@@ -1,0 +1,177 @@
+#header {
+    /* display: flex; */
+    background-color: #ffffff;
+    min-height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+}
+
+.element {
+    padding: 3%;
+    object-fit: none;
+    max-height: 2;
+}
+
+#headerLeft {
+    display: flex;
+}
+
+#headerRight {
+    display: flex;
+    position: absolute;
+    right: 10px;
+    transform: translateY(-53px);
+}
+
+html {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+body {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+#sneakersLogo {
+    transform: translateY(-3px);
+    padding-left: 10px;
+}
+
+#mainImage {
+    width: 100%;
+}
+
+#arrows {
+    /* position: absolute; */
+    display: flex;
+    transform: translateY(-260px);
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+#arrowL {
+   position: absolute;
+   background-color: #ffffff; 
+   transform: translateY(50px);
+   padding: 10px;
+   border-radius: 100px;
+   width: 20px;
+   height: 20px;
+   margin-left: 10px;
+}
+
+#arrowR {
+    position: absolute;
+    background-color: #ffffff; 
+    transform: translateY(50px);
+    padding: 10px;
+    border-radius: 100px;
+    width: 20px;
+    height: 20px;
+    right: 0;
+    margin-right: 10px; 
+}
+
+#mainImageDiv:hover #arrows {
+    opacity: 100;
+}
+
+#companyTitle {
+    font-family: myFont;
+    /* font-weight: 400; */
+    color: rgb(243, 151, 12);
+    padding: 10px;
+    padding-left: 15px;
+    font-size: 14px;
+    transform: translateY(-5px)
+}
+
+#limitedTitle {
+    transform: translateY(-18px);
+}
+
+.tit {
+    font-family: myFontII;
+    padding-left: 15px;
+    color: hsl(220, 13%, 13%);
+    font-size: 25px;
+}
+
+#paragraph {
+    padding-left: 15px;
+    transform: translateY(-20px);
+    font-family: myFontIII;
+    font-size: 16px;
+    color: hsl(219, 9%, 45%);
+}
+
+.saleBox {
+    margin-left: 15px;
+    height: 20px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+    background-color: hsl(25, 100%, 94%);
+    font-family: myFontII;
+    color: rgb(243, 151, 12);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#oldPrice {
+    position: absolute;
+    right: 20px;
+    transform: translateY(-10px);
+    white-space: nowrap;
+    font-family: myFont;
+    color: hsl(220, 14%, 75%);
+}
+
+#animateImage {
+    width: 100%;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url("fonts/KumbhSans-SemiBold.ttf");
+}
+
+@font-face {
+    font-family: myFontII;
+    src: url("fonts/KumbhSans-Bold.ttf");
+}
+
+@font-face {
+    font-family: myFontIII;
+    src: url("fonts/KumbhSans.ttf");
+}
+
+@keyframes none {
+
+}
+
+@keyframes pictureScrollin {
+    from {transform: translateX(0%);}
+    to {transform: translateX(-100%);}
+}
+
+@keyframes pictureScrollout {
+    from {}
+    to {transform: translateX(-100%);}
+}
+
+@keyframes pictureScrollinII {
+    from {transform: translateX(-200%);}
+    to {transform: translateX(-100%);}
+}
+
+@keyframes pictureScrolloutII {
+    from {transform: translateX(0%);}
+    to {transform: translateX(100%);}
+}
