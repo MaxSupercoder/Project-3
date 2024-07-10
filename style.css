@@ -82,8 +82,7 @@ body {
 
 #companyTitle {
     font-family: myFont;
-    /* font-weight: 400; */
-    color: rgb(243, 151, 12);
+    color: hsl(26, 100%, 55%);
     padding: 10px;
     padding-left: 15px;
     font-size: 14px;
@@ -119,7 +118,7 @@ body {
     text-align: center;
     background-color: hsl(25, 100%, 94%);
     font-family: myFontII;
-    color: rgb(243, 151, 12);
+    color: hsl(26, 100%, 55%);
     border-radius: 5px;
     font-size: 16px;
 }
@@ -137,6 +136,138 @@ body {
     width: 100%;
 }
 
+.boxi {
+    margin-left: 25px;
+    margin-right: 25px;
+    height: 20px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    font-family: myFontII;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#quantityPicker {
+    background-color: hsl(223, 64%, 98%);
+    display: flex;
+    text-align: center;
+}
+
+#minus {
+    padding-right: 20%;
+    transform: translateY(1px);
+    object-fit: none;
+    margin: auto;
+}
+#plus {
+    padding-left: 30%;
+    object-fit: none;
+    margin: auto;
+}
+
+#addToCart {
+    margin-top: 18px;
+    margin-bottom: 90px;
+    background-color: hsl(26, 100%, 55%);
+    color: #ffffff;
+    box-shadow: 0px 10px 40px hsl(32, 100%, 78%);
+    padding-top: 13px;
+    padding-bottom: 20px;
+    font-size: 15px;
+}
+
+#cartImgI {
+    filter: brightness(1000%);
+    scale: 0.8;
+    transform: translateY(4px);
+    padding-right: 16px;
+}
+
+#cartImgII {
+    filter: brightness(0%);
+}
+
+#menu {
+    visibility: visible;
+    position: absolute;
+    z-index: 2;
+    background-color: #ffffff;
+    height: 100%;
+    width: 60%;
+    animation: menu 0.5s;
+}
+
+#background {
+    visibility: visible;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+    opacity: 75%;
+    animation: fade 0.2s;
+}
+
+.clickable:hover {
+    scale: 1.5;
+}
+
+#closeMenu {
+    padding: 25px;
+}
+
+.menuCat {
+    padding-left: 25px;
+    padding-top: 10px;
+    font-family: myFont;
+}
+
+#cart {
+    position: absolute;
+    background-color: white;
+    font-family: myFont;
+    color: hsl(219, 9%, 45%);
+    font-size: 90%;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 30px;
+    padding-top: 10px;
+    width: 240px;
+    float: right;
+    right: 30px;
+    scale: 1.2;
+    transform: translateY(20px);
+}
+
+#cartEmptyText {
+    padding-left: 60px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#cartLabel {
+    font-family: myFont;
+    font-size: 110%;
+    color: black;
+}
+
+#cartPop {
+    position: absolute;
+    right: 80px;
+    font-family: myFontII;
+    color: white;
+    background-color: hsl(26, 100%, 55%);
+    padding: 1px;
+    padding-left: 12px;
+    padding-right: 12px;
+    scale: 0.6;
+    border-radius: 13px;
+    transform: translateY(-86px);
+}
+
 @font-face {
     font-family: myFont;
     src: url("fonts/KumbhSans-SemiBold.ttf");
@@ -150,6 +281,26 @@ body {
 @font-face {
     font-family: myFontIII;
     src: url("fonts/KumbhSans.ttf");
+}
+
+@keyframes menu {
+    from {transform: translateX(-150%)}
+    to {transform: translateX(0%)}
+}
+
+@keyframes menuR {
+    from {transform: translateX(0%)}
+    to {transform: translateX(-150%)}
+}
+
+@keyframes fade {
+    from {opacity: 0%;}
+    to {opacity: 75%;}
+}
+
+@keyframes fadeR {
+    from {opacity: 75%;}
+    to {opacity: 0%;}
 }
 
 @keyframes none {
@@ -174,4 +325,14 @@ body {
 @keyframes pictureScrolloutII {
     from {transform: translateX(0%);}
     to {transform: translateX(100%);}
+}
+
+@keyframes tardis {
+    from {scale: 0;}
+    to {scale: 1;}
+}
+
+@keyframes tardisR {
+    from {scale: 1;}
+    to {scale: 0; top: 10px;}
 }
