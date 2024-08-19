@@ -8,6 +8,7 @@ var nextImgR = 3;
 var way = "for";
 var access = 1;
 var cartOpen = 0;
+var quantity = 0;
 
 function scrollAnimation(){
     console.log("current: ", currentImg ,"\nnext: ", nextImg);
@@ -26,8 +27,6 @@ function scrollAnimation(){
             }
             console.log("yay");
         }
-
-        //imgOne.src = images[0];
     
         imgTwo.style.visibility = "visible";
         imgTwo.style.animation = "pictureScrollin 1s";
@@ -73,8 +72,6 @@ function scrollAnimationReverse(){
             }
             console.log("yay");
         }
-
-        //imgOne.src = images[0];
     
         imgTwo.style.visibility = "visible";
         imgTwo.style.animation = "pictureScrollinII 1s";
@@ -108,8 +105,21 @@ function get(input){
     return document.getElementById(input);
 }
 
+function deleteDa(){
+    var cartList = get("cartList");
+    var cartEmptyList = get("cartEmptyText");
+
+    quantity = 0;
+    document.getElementById("cartPop").style.display = "none";
+    document.getElementById("cartPop").innerHTML = 0;
+
+    cartList.style.display = "none";
+    cartEmptyList.style.display = "block";
+    document.getElementById("quantity").innerHTML = quantity;
+}
+
 //Cart-----------------------------------------------------------------------------------------------
-var quantity = 0;
+
 
 window.onload = function() {
 
@@ -188,10 +198,8 @@ window.onload = function() {
         }
     });
 
-
-
-    //checkout ?  ?
-    get("checkout").addEventListener("click", function(){
+    //checkout
+    get("checkout").addEventListener("", function(){
         get("cart").style.display = "none";
         var tardis = get("tardis");
         tardis.style.display = "block";
@@ -207,4 +215,88 @@ window.onload = function() {
             document.write("checkout :D");
         }, 10000);
     })
+
+    document.getElementById("lightboxClose").addEventListener("click", function(){
+        get("lightboxImg").style.display = "none";
+        get("lightboxImages").style.display = "none";
+        get("arrowsL").style.display = "none";
+        get("lightboxClose").style.display = "none";
+        get("background").style.display = "none";
+    });
+}
+
+var miniImgs = [
+    "miniImgI",
+    "miniImgII",
+    "miniImgIII",
+    "miniImgIV"
+]
+
+var miniImgSel = 0;
+
+function changeImg(element){
+    for (var i = 0; i < 4;){
+        get(miniImgs[i]).className = "miniImg";
+        i++;
+    }
+    element.className = "miniImgSel";
+    get("mainImage").src = element.src;
+}
+
+function menuDesktopClick(element , offsetLeft) {
+    var line = get("superLine");
+    line.style.display = "block";
+    var offsetTop = get("headerLine").offsetTop
+    line.style.top = (offsetTop - 3) + "px"
+    line.style.left = (offsetLeft) + "px"
+
+}
+
+var miniImgsL = [
+    "miniImgLI",
+    "miniImgLII",
+    "miniImgLIII",
+    "miniImgLIV"
+]
+
+function changeImgL(element, number){
+    currentImg = number;
+    for (var i = 0; i < 4;){
+        get(miniImgsL[i]).className = "miniImg";
+        i++;
+    }
+    element.className = "miniImgSel";
+    get("lightboxImg").src = element.src;
+}
+
+function showLightbox(){
+    //
+    document.getElementById("arrowLL").style.left = document.getElementById("lightboxImg").offsetLeft + "px";
+    document.getElementById("arrowLR").style.left = "70%";
+    if(screen.width >= 2560){
+        document.getElementById("lightboxImg").style.display = "block";
+        document.getElementById("lightboxImages").style.display = "block";
+        document.getElementById("arrowsL").style.display = "block";
+        document.getElementById("lightboxClose").style.display = "block";
+        document.getElementById("background").style.display = "block";
+        showLightbox();
+    }
+}
+var currentImg = 0;
+function lightboxScroll(direction) {
+    
+    if (direction == 0){
+        currentImg++;
+        if(currentImg == 4){
+            currentImg = 0;
+        }
+        document.getElementById("lightboxImg").src = images[currentImg];
+    }
+    if (direction == 1){
+        currentImg--;
+        if(currentImg == -1){
+            currentImg = 3;
+        }
+        document.getElementById("lightboxImg").src = images[currentImg];
+    }
 }

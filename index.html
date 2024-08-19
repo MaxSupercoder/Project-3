@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-y: hidden;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
@@ -14,19 +14,39 @@
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
 </head>
-<body>
+<body id="everything">
     
   <img id="tardis" src="images/tardis.gif" style="transform: translateZ(10px); position: absolute; right: 25%; left: 25%; top: 25%; display: none; animation: tardis 3s;">
 
-  <!-- Side Thingy -->
-     <div id="menu" style="display: none;">
-       <img src="images/icon-close.svg" id="closeMenu">
-       <p class="menuCat" class=" ">Collections</p>
-       <p class="menuCat">Mens</p>
-       <p class="menuCat">Women</p>
-       <p class="menuCat">About</p>
-       <p class="menuCat">Contact</p>
-     </div>
+  <!-- Side Menu -->
+    <div id="menu" style="display: none;">
+      <img src="images/icon-close.svg" id="closeMenu">
+      <p class="menuCat" class=" ">Collections</p>
+      <p class="menuCat">Mens</p>
+      <p class="menuCat">Women</p>
+      <p class="menuCat">About</p>
+      <p class="menuCat">Contact</p> 
+    </div>
+     
+    <div id="invisidiv" style="position: absolute; width: 300px; height: 300px; z-index: 1; left: 15%; translate: 0px 250px;" onclick="showLightbox()"></div>
+
+    <!-- Lightbox Image-->
+    <img id="lightboxImg" style="position: absolute; z-index: 5; width: 40%; left: 30%; top: 12%; object-fit: contain; border-radius: 20px; padding: 0px; display: none;" src="images/image-product-1.jpg">
+
+      <!-- Mini Images -->
+    <div id="lightboxImages" style="display: none;">
+      <img class="miniImgSel" src="images/image-product-1.jpg" onclick="changeImgL(this , 0)" id="miniImgLI">
+      <img class="miniImg" src="images/image-product-2.jpg" onclick="changeImgL(this , 1)"  id="miniImgLII">
+      <img class="miniImg" src="images/image-product-3.jpg" onclick="changeImgL(this , 2)" id="miniImgLIII">
+      <img class="miniImg" src="images/image-product-4.jpg" onclick="changeImgL(this , 3)" id="miniImgLIV">
+    </div>
+
+    <div id="arrowsL" style="display: none;"> 
+      <div id="arrowLL" onclick="lightboxScroll(1)"><img src="images/icon-previous.svg" style="transform: translateX(2px); scale: 0.8;"></div>
+      <div id="arrowLR" onclick="lightboxScroll(0)"><img src="images/icon-previous.svg" style="transform: scaleX(-1) translateX(-6px); scale: 0.8;"></div> 
+    </div>
+
+    <img id="lightboxClose" style="position: absolute; filter: brightness(1000%); z-index: 4; right: 31%; scale: 1.4; top: 7%; display: none;" src="images/icon-close.svg">
 
      <div id="background" style="display: none;"></div>
 
@@ -34,12 +54,29 @@
   <header id="header">
     <table id="tableTop">
       <tr>
-        <td><div id="headerLeft"> <!--menu--><img src="images/icon-menu.svg" class="element" id="menuButt"> <!--SNEAKERS logo--><img src="images/logo.svg" class="element" id="sneakersLogo"></div> </td>
-        <td><div id="headerRight"> <!--Cart image--><img src="images/icon-cart.svg" id="cartImg" class="element" style="transform: translateX(15px);"> <!--person--><img src="images/image-avatar.png" class="element" id="avatar" style="scale: 0.3;"></div></td>
+        <td><div id="headerLeft"> <!--menu--><img src="images/icon-menu.svg" class="element" id="menuButt"> <!--SNEAKERS logo--><img src="images/logo.svg" class="element" id="sneakersLogo"></div></td>
+        
+        <td style="font-family: myFontIII; color: hsl(219, 9%, 45%); text-align: center;" id="menuDesktop">
+          <p class="menuDesktopClass" onclick="menuDesktopClick(this , 223)">Collections</p>
+          <p class="menuDesktopClass" onclick="menuDesktopClick(this , 313)">Men</p>
+          <p class="menuDesktopClass" onclick="menuDesktopClick(this , 397)">Women</p>
+          <p class="menuDesktopClass" onclick="menuDesktopClick(this , 482)">About</p>
+          <p class="menuDesktopClass" onclick="menuDesktopClick(this , 572)">Contact</p>
+        
+        </td>
+
+        <!-- Special Line -->
+        <div id="superLine" style="display: none; height: 4px; background-color: hsl(26, 100%, 55%); width: 60px; position: absolute;"></div>
+        
+          <td><div id="headerRight"> <!--Cart image--><img src="images/icon-cart.svg" id="cartImg" class="element" style="transform: translateX(15px);"> <!--person--><img src="images/image-avatar.png" class="element" id="avatar"></div></td>
       </tr>
     </table>
+    <!-- Line -->
+    <div id="headerLine" style="height: 1px; background-color: hsl(228, 9%, 89%); width: calc(100% + 20px); transform: translateX(-10px); margin-top: 20px;"></div>
   </header>
 
+
+  <!-- CART ----------------------------------------------------------------------->
   <div id="cartPop" style="display: none;">0</div>
 
   <div id="cart" style="display: none;">
@@ -53,11 +90,11 @@
     <ul id="cartList" style="list-style-type: none; display: none;">
 
       <li style="font-family: myFontIII; font-size: 13px; transform: translateX(-60px);">
-        <div style="display: flex;">
+        <div style="display: flex;" id="hiya">
           <img style="border-radius: 15px; width: 50px; height: 50px; padding: 10px;" src="images/image-product-1-thumbnail.jpg">
           <p style="text-wrap: nowrap;">Autumn Limited Edition...</p>
           <p style="text-wrap: nowrap; transform: translateX(-150px);" id="priceFinal"><br>price price price</p>
-          <img src="images/icon-delete.svg" style="scale: 0.9; object-fit: none; position: absolute; right: -70px; transform: translateY(30px);" id="exterminate">
+          <img src="images/icon-delete.svg" style="scale: 0.9; object-fit: none; position: absolute; right: -70px; transform: translateY(30px);" id="exterminate" onclick="deleteDa()">
         </div>
       </li>
 
@@ -69,45 +106,53 @@
   
 
   </div>
+  <!------------------------------------------------------------------------------------------------>
 
+<div id="bod">
   <!-- BIG IMAGE --> 
   <div id="mainImageDiv">
     <img id="mainImage" src="images/image-product-1.jpg">
     <img id="animateImage" src="images/image-product-2.jpg" style="position: absolute; transform: translateX(-100%); animation: scrollImage 1s; visibility: hidden;">  
     <div id="arrows"> 
       <div id="arrowL" onclick="scrollAnimationReverse()"><img src="images/icon-previous.svg" style="transform: translateX(2px); scale: 0.8;"></div>
-    
-      <di
-      v id="arrowR" onclick="scrollAnimation()"><img src="images/icon-previous.svg" style="transform: scaleX(-1) translateX(-6px); scale: 0.8;"></div> 
-    </div id="arrows">
+      <div id="arrowR" onclick="scrollAnimation()"><img src="images/icon-previous.svg" style="transform: scaleX(-1) translateX(-6px); scale: 0.8;"></div> 
+    </div id="arrows">    
   </div id="mainImageDiv">
-    
+
+  <!-- Mini Images -->
+  <div id="extraImages">
+    <img class="miniImgSel" src="images/image-product-1.jpg" onclick="changeImg(this)" id="miniImgI">
+    <img class="miniImg" src="images/image-product-2.jpg" onclick="changeImg(this)"  id="miniImgII">
+    <img class="miniImg" src="images/image-product-3.jpg" onclick="changeImg(this)" id="miniImgIII">
+    <img class="miniImg" src="images/image-product-4.jpg" onclick="changeImg(this)" id="miniImgIV">
+  </div>
 
   <!-- Text Content -->
-  <div>
+  <div id="info">
       <p id="companyTitle">SNEAKER COMPANY</p>
-      <div id="limitedTitle" class="tit">Fall Limited Edition <br>Sneakers</div>
+      <div id="limitedTitle" class="tit">Fall Limited Edition<br>Sneakers</div>
       <p id="paragraph">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.</p>
        
       <!-- PRICING -->
-      <table style="transform: translateY(-10px);">
-        <tr>
-          <td><div id="price" class="tit">$125.00</div></td>
-          <td><div id="sale" class="saleBox">50%</div></td> 
-          <td style="width: 100%;"><div id="oldPrice"><del>$250.00</del></div></td>
-        </tr>
-        
-      </table>
+      <div id="pricing">
+        <table style="transform: translateY(-10px);">
+          <tr>
+            <td><div id="price" class="tit">$125.00</div></td>
+            <td><div id="sale" class="saleBox">50%</div></td> 
+          </tr>
+        </table>
+        <div id="oldPrice"><del>$250.00</del></div>
+       </div>
 
       <!-- BUYING -->
-      <div>
+      <div id="buyingDiv">
         <!-- quantity -->
         <div id="quantityPicker" class="boxi"><img src="images/icon-minus.svg" id="minus"><p id="quantity" style="margin: auto; transform: translateX(5px);">0</p><img src="images/icon-plus.svg" id="plus"></div>
         <!-- add to cart -->
         <div id="addToCart" class="boxi"><img src="images/icon-cart.svg" id="cartImgI">Add to cart</div>
       </div>
   </div>
-    
+</div id="bod">    
     
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
