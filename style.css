@@ -378,14 +378,19 @@ body {
     to {transform: translateX(100%);}
 }
 
-@keyframes tardis {
+@keyframes click {
+    0% {scale: 1;}
+    50% {scale: 0.5;}
+    99% {scale: 1;}
+}
+
+@keyframes lightboxOpen {
     from {scale: 0;}
     to {scale: 1;}
 }
-
-@keyframes tardisR {
+@keyframes lightboxClose {
     from {scale: 1;}
-    to {scale: 0; top: 10px;}
+    to {scale: 0;}
 }
 
 /* Phone View */

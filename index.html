@@ -15,11 +15,9 @@
   </style>
 </head>
 <body id="everything">
-    
-  <img id="tardis" src="images/tardis.gif" style="transform: translateZ(10px); position: absolute; right: 25%; left: 25%; top: 25%; display: none; animation: tardis 3s;">
 
   <!-- Side Menu -->
-    <div id="menu" style="display: none;">
+    <div id="menu" style="display: none; z-index: 10;">
       <img src="images/icon-close.svg" id="closeMenu">
       <p class="menuCat" class=" ">Collections</p>
       <p class="menuCat">Mens</p>
@@ -33,17 +31,18 @@
     <!-- Lightbox Image-->
     <img id="lightboxImg" style="position: absolute; z-index: 5; width: 40%; left: 30%; top: 12%; object-fit: contain; border-radius: 20px; padding: 0px; display: none;" src="images/image-product-1.jpg">
 
-      <!-- Mini Images -->
+      <!-- Mini Lightbox Images -->
     <div id="lightboxImages" style="display: none;">
-      <img class="miniImgSel" src="images/image-product-1.jpg" onclick="changeImgL(this , 0)" id="miniImgLI">
-      <img class="miniImg" src="images/image-product-2.jpg" onclick="changeImgL(this , 1)"  id="miniImgLII">
-      <img class="miniImg" src="images/image-product-3.jpg" onclick="changeImgL(this , 2)" id="miniImgLIII">
-      <img class="miniImg" src="images/image-product-4.jpg" onclick="changeImgL(this , 3)" id="miniImgLIV">
+      <img class="miniImgSel" src="images/image-product-1.jpg" onclick="changeImgL(this , 0), clicky(this)" id="miniImgLI">
+      <img class="miniImg" src="images/image-product-2.jpg" onclick="changeImgL(this , 1), clicky(this)"  id="miniImgLII">
+      <img class="miniImg" src="images/image-product-3.jpg" onclick="changeImgL(this , 2), clicky(this)" id="miniImgLIII">
+      <img class="miniImg" src="images/image-product-4.jpg" onclick="changeImgL(this , 3), clicky(this)" id="miniImgLIV">
     </div>
 
+    <!-- Lightbox Arrows -->
     <div id="arrowsL" style="display: none;"> 
-      <div id="arrowLL" onclick="lightboxScroll(1)"><img src="images/icon-previous.svg" style="transform: translateX(2px); scale: 0.8;"></div>
-      <div id="arrowLR" onclick="lightboxScroll(0)"><img src="images/icon-previous.svg" style="transform: scaleX(-1) translateX(-6px); scale: 0.8;"></div> 
+      <div id="arrowLL" onclick="lightboxScroll(1), clicky(this)"><img src="images/icon-previous.svg" style="transform: translateX(2px); scale: 0.8;"></div>
+      <div id="arrowLR" onclick="lightboxScroll(0), clicky(this)"><img src="images/icon-previous.svg" style="transform: scaleX(-1) translateX(-6px); scale: 0.8;"></div> 
     </div>
 
     <img id="lightboxClose" style="position: absolute; filter: brightness(1000%); z-index: 4; right: 31%; scale: 1.4; top: 7%; display: none;" src="images/icon-close.svg">
@@ -62,10 +61,9 @@
           <p class="menuDesktopClass" onclick="menuDesktopClick(this , 397)">Women</p>
           <p class="menuDesktopClass" onclick="menuDesktopClick(this , 482)">About</p>
           <p class="menuDesktopClass" onclick="menuDesktopClick(this , 572)">Contact</p>
-        
         </td>
 
-        <!-- Special Line -->
+        <!-- Special Orange Line -->
         <div id="superLine" style="display: none; height: 4px; background-color: hsl(26, 100%, 55%); width: 60px; position: absolute;"></div>
         
           <td><div id="headerRight"> <!--Cart image--><img src="images/icon-cart.svg" id="cartImg" class="element" style="transform: translateX(15px);"> <!--person--><img src="images/image-avatar.png" class="element" id="avatar"></div></td>
@@ -114,8 +112,8 @@
     <img id="mainImage" src="images/image-product-1.jpg">
     <img id="animateImage" src="images/image-product-2.jpg" style="position: absolute; transform: translateX(-100%); animation: scrollImage 1s; visibility: hidden;">  
     <div id="arrows"> 
-      <div id="arrowL" onclick="scrollAnimationReverse()"><img src="images/icon-previous.svg" style="transform: translateX(2px); scale: 0.8;"></div>
-      <div id="arrowR" onclick="scrollAnimation()"><img src="images/icon-previous.svg" style="transform: scaleX(-1) translateX(-6px); scale: 0.8;"></div> 
+      <div id="arrowL" onclick="scrollAnimationReverse() , clicky(this)"><img src="images/icon-previous.svg" style="transform: translateX(2px); scale: 0.8;"></div>
+      <div id="arrowR" onclick="scrollAnimation(), clicky(this)"><img src="images/icon-previous.svg" style="transform: scaleX(-1) translateX(-6px); scale: 0.8;"></div> 
     </div id="arrows">    
   </div id="mainImageDiv">
 
@@ -156,7 +154,7 @@
     
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">BatmanInc.</a>
+    Coded by <a href="#">MaxInc.</a>
   </div>
 </body>
 </html>

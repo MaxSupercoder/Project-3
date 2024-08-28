@@ -101,7 +101,7 @@ function scrollAnimationReverse(){
     way = "rev";
 }
 
-function get(input){
+function get(input){ 
     return document.getElementById(input);
 }
 
@@ -120,19 +120,30 @@ function deleteDa(){
 
 //Cart-----------------------------------------------------------------------------------------------
 
-
 window.onload = function() {
 
     var quantityLabel = document.getElementById("quantity");
     
     //choosing quantity
     document.getElementById("minus").addEventListener("click", function(){
+
+        document.getElementById("minus").style.animation = "click 0.3s";
+        setTimeout(function(){
+            document.getElementById("minus").style.animationName = "none";
+        }, 350);
+
         if(quantity > 0){
             quantity--;
             quantityLabel.innerHTML = quantity;
         }
     })
     document.getElementById("plus").addEventListener("click", function(){
+
+        document.getElementById("plus").style.animation = "click 0.3s";
+        setTimeout(function(){
+            document.getElementById("plus").style.animationName = "none";
+        }, 350);
+
         if(quantity < 8){
             quantity++;
             quantityLabel.innerHTML = quantity;
@@ -142,6 +153,12 @@ window.onload = function() {
     //closing menu
     document.getElementById("closeMenu").addEventListener("click", function(){
         var menu = document.getElementById("menu");
+
+        document.getElementById("closeMenu").style.animation = "click 0.3s";
+        setTimeout(function(){
+            document.getElementById("closeMenu").style.animationName = "none";
+        }, 350);
+
         var background = document.getElementById("background");
         background.style.animation = "fadeR 0.5s"
         menu.style.animation = "menuR 0.5s";
@@ -156,6 +173,11 @@ window.onload = function() {
         var menu = document.getElementById("menu");
         var background = document.getElementById("background");
 
+        document.getElementById("menuButt").style.animation = "click 0.3s";
+        setTimeout(function(){
+            document.getElementById("menuButt").style.animationName = "none";
+        }, 350);
+
         menu.style.animation = "menu 0.5s";
         menu.style.display = "block"
         background.style.display = "block"
@@ -165,6 +187,11 @@ window.onload = function() {
     document.getElementById("cartImg").addEventListener("click", function(){
         var element = document.getElementById("cartImg");
         var cart = document.getElementById("cart");
+
+        document.getElementById("cartImg").style.animation = "click 0.3s";
+        setTimeout(function(){
+            document.getElementById("cartImg").style.animationName = "none";
+        }, 350);
 
         if (cartOpen == 0){
             cart.style.display = "block"
@@ -177,6 +204,10 @@ window.onload = function() {
 
     document.getElementById("addToCart").addEventListener("click", function(){
         
+        document.getElementById("addToCart").style.animation = "click 0.3s";
+        setTimeout(function(){
+            document.getElementById("addToCart").style.animationName = "none";
+        }, 350);
         var cartList = get("cartList");
         var cartEmptyList = get("cartEmptyText");
         var price = get("priceFinal");
@@ -201,28 +232,30 @@ window.onload = function() {
     //checkout
     get("checkout").addEventListener("", function(){
         get("cart").style.display = "none";
-        var tardis = get("tardis");
-        tardis.style.display = "block";
-        tardis.style.animation = "tardis 3s";
-
-        setTimeout(function(){
-            tardis.style.animation = "tardisR 2s";
-        }, 6000);
-        setTimeout(function(){
-            tardis.style.display = "none";
-        }, 7900);
-        setTimeout(function(){
-            document.write("checkout :D");
-        }, 10000);
     })
 
     document.getElementById("lightboxClose").addEventListener("click", function(){
-        get("lightboxImg").style.display = "none";
+        document.getElementById("lightboxImg").style.animation = "lightboxClose .9s";
+        document.getElementById("background").style.animation = "fadeR 1s";
+        setTimeout(function(){
+            get("lightboxImg").style.display = "none";
+            get("background").style.display = "none";
+            document.getElementById("background").style.animation = "fade 1s";
+        },800);
         get("lightboxImages").style.display = "none";
         get("arrowsL").style.display = "none";
         get("lightboxClose").style.display = "none";
-        get("background").style.display = "none";
     });
+
+    document.getElementById("mainImage").addEventListener("click" , function(){
+        if (document.getElementById("invisidiv").style.display == "none")
+        {
+            console.log("Yay");
+            showLightbox();
+        }
+    })
+
+    window.addEventListener("wheel", event => console.info(event.deltaY));
 }
 
 var miniImgs = [
@@ -273,13 +306,16 @@ function showLightbox(){
     //
     document.getElementById("arrowLL").style.left = document.getElementById("lightboxImg").offsetLeft + "px";
     document.getElementById("arrowLR").style.left = "70%";
+    document.getElementById("lightboxImg").style.animation = "lightboxOpen 1s";
     if(screen.width >= 2560){
         document.getElementById("lightboxImg").style.display = "block";
         document.getElementById("lightboxImages").style.display = "block";
         document.getElementById("arrowsL").style.display = "block";
         document.getElementById("lightboxClose").style.display = "block";
         document.getElementById("background").style.display = "block";
-        showLightbox();
+        document.getElementById("arrowLL").style.left = document.getElementById("lightboxImg").offsetLeft + "px";
+        document.getElementById("arrowLR").style.left = "70%";
+        //showLightbox();
     }
 }
 var currentImg = 0;
@@ -299,4 +335,17 @@ function lightboxScroll(direction) {
         }
         document.getElementById("lightboxImg").src = images[currentImg];
     }
+    for (var i = 0; i < 4;){
+        get(miniImgsL[i]).className = "miniImg";
+        i++;
+    }
+    document.getElementById(miniImgsL[currentImg]).className = "miniImgSel";
+}
+
+function clicky(element)
+{
+    element.style.animation = "click 0.3s";
+    setTimeout(function(){
+        element.style.animationName = "none";
+    }, 350);
 }
